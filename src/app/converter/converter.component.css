@@ -1,0 +1,16 @@
+main {
+    background-color: #DADADA;
+    min-height: 100vh;
+}
+
+main>.grid {
+    height: 100vh;
+}
+
+.image {
+    margin-top: -100px;
+}
+
+.column {
+    max-width: 450px;
+}

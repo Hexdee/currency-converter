@@ -1,0 +1,58 @@
+<!-- <header class="ui large top fixed inverted hidden menu">
+    <nav sui-container>
+        <a suiMenuItem [suiActive]="true" class="active item">Home</a>
+        <a suiMenuItem>Learn more</a>
+        <a suiMenuItem>About us</a>
+        <div class="right menu">
+            <h1 suiMenuHeader class="ui inverted">Converter</h1>
+        </div>
+    </nav>
+</header> -->
+<main>
+    <div class="ui middle aligned center aligned grid">
+        <div class="ui column">
+            <h2 class="ui green image header">
+                <img src="assets/images/logo.png" class="image">
+                <div class="content">
+                    Currency Converter
+                </div>
+            </h2>
+            <form [formGroup]="conversionForm" (ngSubmit)="convertCurrency()" class="ui large form">
+                <div class="ui stacked segment">
+                    <div style="display: flex; justify-content: space-between;">
+                        <h2 class="ui green header">Convert </h2><i sui-icon [suiLoading]="isRefreshing"
+                            suiColour="green" (click)="refresh()" suiIconType="redo" style="cursor: pointer;"></i>
+                    </div>
+                    <div suiFormField>
+                        <div sui-input>
+                            <input type="number" placeholder="0.00" formControlName="fromAmount" [disabled]="submitted"
+                                required="" />
+                            <sui-select suiPlaceholder="Select Currency" [suiOptions]="currencies"
+                                [disabled]="submitted" formControlName="fromCurrency" required>
+                            </sui-select>
+                        </div>
+                    </div>
+                    <div suiFormField>
+                        <div sui-input>
+                            <input type="number" [disabled]="true" placeholder="0.00" formControlName="toAmount" />
+                            <sui-select suiPlaceholder="Select Currency" [suiOptions]="currencies"
+                                [disabled]="submitted" formControlName="toCurrency" required>
+                            </sui-select>
+                        </div>
+                    </div>
+                    <button sui-button [suiFluid]="true" suiColour="green" type="submit" [suiLoading]="isLoading"
+                        [disabled]="submitted">Convert</button>
+                </div>
+            </form>
+
+            <div *ngIf="conversionError" class="ui negative message" style="margin-top: 20px;">
+                <div class="header">Conversion Error</div>
+                <p>{{ conversionError }}</p>
+            </div>
+            <div class="ui message">
+                Conversion rate: <span *ngIf="conversionResult"> 1 {{conversionForm.value.fromCurrency}} =
+                    {{conversionResult.rate}} {{conversionForm.value.toCurrency}}</span>
+            </div>
+        </div>
+    </div>
+</main>
