@@ -61,7 +61,7 @@ export class ConverterComponent implements OnInit {
       next:
         (rate: number | null) => {
           if (rate) {
-            const amount = +(fromAmount * rate).toFixed(2);
+            const amount = +(fromAmount * rate).toFixed(4);
             this.conversionResult = { rate, amount };
             this.conversionForm.controls["toAmount"].setValue(amount);
             this.conversionError = '';
